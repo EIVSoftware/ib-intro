@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Instituto Belgrano</title>
+</head>
+<body>
+
+	<h1 th:if="${!#strings.isEmpty(nombre)}" th:text="'Hola ' + ${nombre}"><p>aaaa</p></h1>
+	
+	<h1 th:if="${#strings.isEmpty(nombre)}">TE FALTO EL NOMBRE</h1>
+
+</body>
+</html>
