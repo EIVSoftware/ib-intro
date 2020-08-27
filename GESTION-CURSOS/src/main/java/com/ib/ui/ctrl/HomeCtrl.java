@@ -1,4 +1,4 @@
-package com.ib.ctrl;
+package com.ib.ui.ctrl;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

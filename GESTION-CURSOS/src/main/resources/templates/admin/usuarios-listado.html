@@ -29,12 +29,15 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>[id]</td>
-										<td>[nombre de usuario]</td>
-										<td>[nombre y apellido]</td>
-										<td>[email]</td>
-										<td>[roles]</td>
+									<tr th:each="usuario : ${usuarios}">
+										<td th:text="${usuario.id}">[id]</td>
+										<td th:text="${usuario.username}">[nombre de usuario]</td>
+										<td th:text="${usuario.denominacion}">[nombre y apellido]</td>
+										<td th:text="${usuario.email}">[email]</td>
+										
+										<td th:if="${#lists.isEmpty(usuario.roles)}">SIN ROLES ASIGNADOS</td>
+										<td th:unless="${#lists.isEmpty(usuario.roles)}" th:text="${#strings.listJoin(usuario.roles, ',')}" >[roles]</td>
+										
 										<td>
 											<div class="btn-group">
 						                        <button type="button" class="btn btn-default"><i class="nav-icon fas fa-edit"></i></button>
