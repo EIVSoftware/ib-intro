@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es" th:replace="admin/usuarios :: usuarios (~{::section}, ~{::script})">
-<head th:replace="fragments/head::head ('Usuarios')" />
+<html xmlns:th="http://www.thymeleaf.org" lang="es" th:replace="admin/cursos :: cursos (~{::section}, ~{})">
+<head th:replace="fragments/head::head ('Cursos')" />
 
 <body class="hold-transition sidebar-mini">
 	
@@ -12,7 +12,7 @@
        
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title font-weight-bold">USUARIOS DEL SISTEMA</h3>
+							<h3 class="card-title font-weight-bold">CURSOS DISPONIBLES</h3>
 						</div>
         				<!-- /.card-header -->
             					
@@ -21,20 +21,14 @@
            						<thead>
 									<tr>
 										<th style="width: 10px">#</th>
-                    					<th>Nombre de usuario</th>
-                    					<th>Nombre y Apellido</th>
-                    					<th>Email</th>
-                    					<th>Roles</th>
+                    					<th>Nombre del Curso</th>
                     					<th style="width: 40px">Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td>[id]</td>
-										<td>[nombre de usuario]</td>
-										<td>[nombre y apellido]</td>
-										<td>[email]</td>
-										<td>[roles]</td>
+										<td>[nombre del curso]</td>
 										<td>
 											<div class="btn-group">
 						                        <button type="button" class="btn btn-default"><i class="nav-icon fas fa-edit"></i></button>
@@ -62,7 +56,7 @@
 	</section>
 	<!-- /. Seccion tabla LISTA DE USUARIOS -->
 	
-	<script th:src="@{/js/admin/usuarios-listado.js}"></script>
+	<script th:src="@{/js/admin/cursos-listado.js}"></script>
 	
 </body>
 </html>

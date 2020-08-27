@@ -5,7 +5,7 @@
 	<body>
 		
   		<!-- Main Sidebar Container -->
-		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:fragment="aside">
+		<aside class="main-sidebar sidebar-dark-primary elevation-4" th:fragment="aside(navLinkId)">
 		
     		<!-- Brand Logo -->
     		<a href="#" class="brand-link">
@@ -31,12 +31,14 @@
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					
 						<li class="nav-item">
-							<a href="#" class="nav-link active">
+							<a th:href="${navLinkId == 'nav-link-usuarios'}? '#' : @{/admin/usuarios}" 
+									class="nav-link" th:classappend="${navLinkId == 'nav-link-usuarios'}? 'active'">
 								<i class="nav-icon fas fa-users"></i>Usuarios
               				</a>
             			</li>
 						<li class="nav-item">
-							<a th:href="@{/admin/cursos}" class="nav-link">
+							<a th:href="${navLinkId == 'nav-link-cursos'}? '#' : @{/admin/cursos}" 
+									class="nav-link" th:classappend="${navLinkId == 'nav-link-cursos'}? 'active'">
 								<i class="nav-icon fas fa-book-open"></i>Cursos
               				</a>
             			</li>
