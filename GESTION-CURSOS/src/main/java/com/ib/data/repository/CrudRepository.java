@@ -1,6 +1,10 @@
 package com.ib.data.repository;
 
-public interface CrudRepository<T> {
+import java.util.Optional;
+
+public interface CrudRepository<T, I> {
 
     public Iterable<T> findAll();
+    
+    public Optional<T> findById(I id);
 }

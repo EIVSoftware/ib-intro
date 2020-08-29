@@ -9,5 +9,6 @@ CREATE TABLE usuarios (
 	is_account_non_locked BIT NOT NULL,
 	is_credentials_non_expired BIT NOT NULL,
 	is_enabled BIT NOT NULL,
-	CONSTRAINT pk_usuario_id PRIMARY KEY (usuario_id)
+	CONSTRAINT pk_usuario_id PRIMARY KEY (usuario_id),
+	UNIQUE (username)
 );
