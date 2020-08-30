@@ -79,7 +79,7 @@ public class UsuarioService {
         usuarioEntity.setCredentialsNonExpired(credentialsNonExpired);
         usuarioEntity.setEnabled(enabled);
         
-        usuarioRepository.create(usuarioEntity);
+        usuarioRepository.update(id, usuarioEntity);
         
         return usuarioEntity;
     }
