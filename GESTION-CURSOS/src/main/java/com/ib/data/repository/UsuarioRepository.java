@@ -152,7 +152,6 @@ public class UsuarioRepository implements CrudRepository<UsuarioEntity, Long> {
         
         parameterSource.addValue("id", usuarioEntity.getId());
         parameterSource.addValue("username", usuarioEntity.getUsername());
-        parameterSource.addValue("password", usuarioEntity.getPassword());
         parameterSource.addValue("apellidos", usuarioEntity.getApellidos());
         parameterSource.addValue("nombres", usuarioEntity.getNombres());
         parameterSource.addValue("email", usuarioEntity.getEmail());

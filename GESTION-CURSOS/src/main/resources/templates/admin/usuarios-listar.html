@@ -43,8 +43,17 @@
 						                        <a class="btn btn-default" th:href="@{'/admin/usuarios/' + ${usuario.id} + '/frm'}" role="button">
 													<i class="nav-icon fas fa-edit"></i>
 												</a>
-												<button type="button" class="btn btn-danger"><i class="nav-icon fas fa-trash-alt"></i></button>
+												<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete"
+														th:data-id="${usuario.id}" th:data-usuario="${usuario.denominacion}" >
+													<i class="nav-icon fas fa-trash-alt"></i>
+												</button>
 											</div>
+										</td>
+									</tr>
+									<tr th:if="${#lists.isEmpty(usuarios)}">
+										<td colspan="6">
+											<span class="badge badge-warning">No hay Usuarios para mostrar</span>
+											
 										</td>
 									</tr>
 								</tbody>
@@ -64,6 +73,31 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		<!-- Modal: Confirmar eliminacion usuario -->
+		<div class="modal fade show" id="modal-delete" data-backdrop="static" style="display: none; padding-right: 19px;" aria-modal="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Eliminar <strong>USUARIO</strong></h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Esta seguro que desea eliminar permanentemente el usuario seleccionado?</p>
+					</div>
+					<div class="modal-footer justify-content-between">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary btn-delete-confirm">Confirmar</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		
 	</section>
 	<!-- /. Seccion tabla LISTA DE USUARIOS -->
 	
