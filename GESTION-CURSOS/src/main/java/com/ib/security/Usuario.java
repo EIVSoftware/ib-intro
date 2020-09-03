@@ -22,7 +22,8 @@ public class Usuario implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(
-                new SimpleGrantedAuthority("ADMINISTRADOR"));
+                new SimpleGrantedAuthority("ROLE_ADMINISTRADOR"),
+                new SimpleGrantedAuthority("ROLE_PROFESOR"));
     }
 
     @Override
