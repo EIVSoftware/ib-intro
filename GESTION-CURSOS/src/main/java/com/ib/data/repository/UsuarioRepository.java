@@ -7,7 +7,6 @@ import java.util.Optional;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -67,10 +66,7 @@ public class UsuarioRepository implements CrudRepository<UsuarioEntity, Long> {
         
         JdbcTemplate template = new JdbcTemplate(dataSource);
         
-        return template.query(SQL_SELECT_ALL, (rs, i) -> {
-            UsuarioEntity usuarioEntity = extract(rs);
-            return usuarioEntity;
-        });
+        return template.query(SQL_SELECT_ALL, (rs, i) -> extract(rs));
     }
 
     @Override
@@ -80,12 +76,10 @@ public class UsuarioRepository implements CrudRepository<UsuarioEntity, Long> {
         parameterSource.addValue("id", id);
         
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(dataSource);
-        Optional<UsuarioEntity> optional = template.query(
+        return template.query(
                 SQL_SELECT_BY_ID, 
                 parameterSource, 
                 resultSetExtractor());
-        
-        return optional;
     }
 
     public Optional<UsuarioEntity> findByUsername(String username) {
@@ -94,12 +88,10 @@ public class UsuarioRepository implements CrudRepository<UsuarioEntity, Long> {
         parameterSource.addValue("username", username);
         
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(dataSource);
-        Optional<UsuarioEntity> optional = template.query(
+        return template.query(
                 SQL_SELECT_BY_USRNAME, 
                 parameterSource, 
                 resultSetExtractor());
-        
-        return optional;
     }
     
     @Override
@@ -110,11 +102,10 @@ public class UsuarioRepository implements CrudRepository<UsuarioEntity, Long> {
 
             @Override
             public Long extractData(ResultSet rs) 
-                    throws SQLException, DataAccessException {
+                    throws SQLException {
 
                 if (rs.next()) {
-                    Long id = rs.getLong(1);
-                    return id;
+                    return rs.getLong(1);
                 }
                 
                 return 0L;
@@ -179,7 +170,7 @@ public class UsuarioRepository implements CrudRepository<UsuarioEntity, Long> {
         return new ResultSetExtractor<Optional<UsuarioEntity>>() {
             @Override
             public Optional<UsuarioEntity> extractData(ResultSet rs) 
-                    throws SQLException, DataAccessException {
+                    throws SQLException {
                 
                 if (rs.next()) {
                     UsuarioEntity usuarioEntity = extract(rs);
