@@ -11,20 +11,30 @@
 		<!-- /.login-logo -->
 		<div class="card">
 			<div class="card-body login-card-body">
-				<p class="login-box-msg">Sign in to start your session</p>
+				<p class="login-box-msg">Inicia sesi&oacute;n aqu&iacute;</p>
 	
-	      		<form action="../../index3.html" method="post">
+				<div class="alert alert-danger" th:if="${param.error}">
+					<h6><i class="icon fas fa-ban"></i>Atenci&oacute;n!</h6>
+                  	El nombre de Usuario y/o Contrase&ntilde;a son incorrectos
+				</div>
+				
+				<div class="alert alert-info" th:if="${param.logout}">
+					<h6><i class="icon fas fa-door-closed"></i>Hasta pronto!</h6>
+                  	La sesi&oacute;n se cerr&oacute; correctamente
+				</div>
+	
+	      		<form name="f" th:action="@{/login}" method="post">
 	        		<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Email" name="user">
+						<input type="text" class="form-control" placeholder="Nombre de usuario" id="username" name="username" autofocus="autofocus" autocomplete="off">
 	          			<div class="input-group-append">
 	            			<div class="input-group-text">
-	              				<span class="fas fa-envelope"></span>
+	              				<span class="fas fa-user"></span>
 	            			</div>
 	          			</div>
 	        		</div>
 	        		
 	        		<div class="input-group mb-3">
-	          			<input type="password" class="form-control" placeholder="Password">
+	          			<input type="password" class="form-control" placeholder="Password" id="password" name="password" autocomplete="off">
 						<div class="input-group-append">
 	           				<div class="input-group-text">
 								<span class="fas fa-lock"></span>
